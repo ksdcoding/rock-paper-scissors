@@ -22,14 +22,8 @@
 
 //User makes a choice
   function userInput () {
-    return prompt ('Rock, Paper or Scissors?');
+    return prompt ('Rock, Paper or Scissors?').toLowerCase();
   };
-
-//converts player choice function to variable
-  const playerSelection = userInput();
-
-// converts computer choice function to variable
-  const computerSelection = computerPlay();
 
 // Plays one round of rock paper scissors combining user input and computer choice and adjusts score
   function playRound (playerSelection, computerSelection) {
@@ -54,31 +48,30 @@
 
 //Plays five rounds of rock paper scissors and determines winner
 function game () {
-let round = 0;
+let round = 1;
 do {
-userInput ();
-playRound (playerSelection, computerSelection);
+const playerSelection = userInput();
+const computerSelection = computerPlay();
+console.log('Round:', round);
+console.log('User Choice:', playerSelection);
+console.log('Computer Choice:', computerSelection);
+console.log('Round Result:', playRound (playerSelection, computerSelection));
+console.log('User Score:',userScore);
+console.log('Computer Score:',computerScore);
 round++;
 }
-while (round <= 4);
+while (round <= 5);
 if (userScore > computerScore) {
   return ('User Wins!');
-} else {
+} else if (userScore < computerScore){
   return ('Computer Wins!');
+} else {
+  return ('Tie Game!');
 }
 };
 
-
-//Executes game
-game ();
-
-//prints to console
-console.log(playerSelection);
-console.log(computerSelection);
-console.log(playRound(playerSelection,computerSelection));
-console.log(userScore);
-console.log(computerScore);
-console.log(game());
+//Executes game and shows winner
+console.log (game ());
 
   </script>
 </body>
